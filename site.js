@@ -46,7 +46,7 @@
     var name_data = this.value;
   });
 
-  if ( name_data >= 1 && email_data >= 6) {
+  if ( name_data.length >= 1 && email_data.length >= 6) {
     console.log('Correct');
     info_sumbit.removeAttribute('disabled');
   }
