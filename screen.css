@@ -27,9 +27,9 @@ h1 {
   line-height: 1.5107814861em; /* 44 / 29.124 = 1.5107814861 */
 }
 p {
-  font-size: 11.125px;
-  line-height: 22px;
-  padding-bottom: 22px;
+  font-size: 0.618055555em; /*11.125 / 18 = 0.618055555*/
+  line-height: 1.977528089em; /*22 / 11.125 = 1.977528089*/
+  padding-bottom: 1.977528089em; /*22 / 11.125 = 1.977528089*/
 }
 
 /* Forms */
@@ -51,7 +51,7 @@ input {
 }
 
 input[type="email"] {
-  margin-bottom: 11px;
+  margin-bottom: 0.611111111em; /* 11 /1 8 = 0.611111111em */
   background-color: rgba(67, 176, 183, 0.5);
 
 }
@@ -62,7 +62,7 @@ input[type="email"]:focus {
 }
 
 input[type="text"] {
-  margin-bottom: 11px;
+  margin-bottom: 0.611111111em; /* 11 /1 8 = 0.611111111em */
   background-color: rgba(67, 176, 183, 0.5);
 
 }
@@ -73,16 +73,30 @@ input[type="text"]:focus {
 }
 
 input[type="submit"] {
-background-color: rgba(67, 176, 183, 1.0);
+  background-color: rgba(67, 176, 183, 1);
 }
 
 input[type="submit"]:active {
-background-color: rgba(67, 176, 183, 0.5);
+  background-color: rgba(67, 176, 183, 0.5);
 }
 
 input[type="submit"]:disabled {
-background-color: rgba(67, 176, 183, 0.1);
+  background-color: rgba(67, 176, 183, 0.1);
 }
+
+@media screen and (min-width: 480px) {
+  form li {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  input {
+    flex: 1 0 auto;
+  }
+  label {
+    flex: 1 0 auto;
+  }
+}
+
 /*
 If you want colons:
 label::after {
