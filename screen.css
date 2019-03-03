@@ -16,41 +16,79 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
   https://www.modularscale.com/?18&px&1.618
 */
 
-/*
-MATH
+/* Base Styles */
+/* Layout */
+/* Module Section */
+/* State */
+
+/* MATH
+
 Standard -1
 11.12px
-0.618055555em | 11.125 / 18 = 0.618055555
-1.977528089em lh | 22 / 11.125 = 1.977528089
-0.988764044em 1/2 lh | 1.977528089 / 2 = 0.988764044
+0.618055555em         | 11.125 / 18 = 0.618055555
+1.977528089em lh      | 22 / 11.125 = 1.977528089
+0.988764044em 1/2 lh  | 1.977528089 / 2 = 0.988764044
 
 Standard
 18px
-1.125em | 18 / 16 = 1.125
-1.222222222em lh | 22 / 18 = 1.2222222222
-0.611111111em 1/2 lh | 1.2222222222 / 2 = 0.611111111
+1.125em               | 18 / 16 = 1.125
+1.222222222em lh      | 22 / 18 = 1.2222222222
+0.611111111em 1/2 lh  | 1.2222222222 / 2 = 0.611111111
 
+Standard +1
 29.124px
-1.618em
+1.618em                | 29.124 / 18 = 1.618
+1.5107814861em lh      | 44 / 29.124 = 1.5107814861
+0.7553907430em 1/2 lh  | 1.5107814861 / 2 = 0.7553907430
+0.3776953715em 1/4 lh  | 1.5107814861 / 4 = 0.3776953715
 
+Standard +2
+47.12px
+2.617777777em           | 47.12 / 18 = 2.617777777
+1.400679117em lh        | 66 / 47.12 = 1.400679117
+0.700339558em 1/2 lh    | 1.400679117 / 2 = 0.700339558
+
+Standard +3
+76.24px
 
 */
 
+/*
+http://mkweb.bcgsc.ca/color-summarizer/?analyze
 
-html {
+COlor summary from images using tool
+
+Color 1: PHB
+#844A34 	132 74 52
+http://paletton.com/#uid=10e0u0kjpg-2Z0zaI7UrenWOlBu
+
+Color 2: DMG
+#54304E 	84 48 78
+http://paletton.com/#uid=14+0u0kdIeY042q5x7lmYnDH1H-
+
+*/
+
+/**/
+
+/* Base Styles */
+
+html { /*Standard*/
   background: #DDD;
   font-family: "Alegreya", "Cambria", "Times", serif;
-  font-size: 1.125em; /* 18 / 16 = 1.125 */
-  line-height: 1.2222222222em; /* 22 / 18 = 1.2222222222 */
-  padding: 1.2222222222em; /* 22 / 18 = 1.2222222222 */
+  font-size: 1.125em;
+  line-height: 1.2222222222em;
+  padding: 1.2222222222em;
 }
-h1 {
+
+h1 { /*Standard +1*/
+  color: #844A34;
   font-family: "Alegreya SC", "Alegreya", "Cambria", "Times", serif;
-  font-size: 1.618em; /* 29.124 / 18 = 1.618 */
-  line-height: 1.5107814861em; /* 44 / 29.124 = 1.5107814861 */
+  font-size: 1.618em;
+  line-height: 1.5107814861em;
 }
-p {
-  padding-bottom: 1.2222222222em; /* 22 / 18 = 1.2222222222 */
+
+p { /*Standard lh*/
+  padding-bottom: 1.2222222222em;
 }
 
 /* Forms */
@@ -60,7 +98,7 @@ label {
   box-sizing: border-box;
 }
 
-input {
+input { /*Standard lh*/
   padding: 1.222222222em;
   margin: 0;
   line-height: inherit;
@@ -71,23 +109,14 @@ input {
 
 }
 
-input[type="email"] {
-  margin-bottom: 0.611111111em; /* 11 /1 8 = 0.611111111em */
-  background-color: rgba(67, 176, 183, 0.5);
+input[type="email"],
+input[type="text"] { /*Standard 1/2 lh*/
+  margin-bottom: 0.611111111em;
+  background-color: rgba(84, 48, 78, 0.5);
 
 }
 
-input[type="email"]:focus {
-  background-color: #EEE;
-
-}
-
-input[type="text"] {
-  margin-bottom: 0.611111111em; /* 11 /1 8 = 0.611111111em */
-  background-color: rgba(67, 176, 183, 0.5);
-
-}
-
+input[type="email"]:focus,
 input[type="text"]:focus {
   background-color: #EEE;
 
@@ -105,12 +134,28 @@ input[type="submit"]:disabled {
   background-color: rgba(67, 176, 183, 0.1);
 }
 
-.disclaimer {
-  padding-top: 1.977528089em; /*22 / 11.125 = 1.977528089*/
-  font-size: 0.618055555em; /*11.125 / 18 = 0.618055555*/
-  line-height: 1.977528089em; /*22 / 11.125 = 1.977528089*/
-  padding-bottom: 1.977528089em; /*22 / 11.125 = 1.977528089*/
+/* Layout */
+
+#submit { /*Standard +1: em, lh, 1/4 lh*/
+  color: #844A34;
+  font-family: "Alegreya SC", "Alegreya", "Cambria", "Times", serif;
+  font-size: 1.618em;
+  padding: 0.3776953715em;
+  line-height: 1.5107814861em;
 }
+
+/* Module Section */
+
+.disclaimer { /*Standard -1*/
+  padding-top: 1.977528089em;
+  font-size: 0.618055555em;
+  line-height: 1.977528089em;
+  padding-bottom: 1.977528089em;
+}
+
+
+
+/* State */
 
 @media screen and (min-width: 480px) {
   form li {
@@ -126,25 +171,17 @@ input[type="submit"]:disabled {
   }
 }
 
-/*
-If you want colons:
-label::after {
-  content: ":";
-}
 
-form li {
-  display: flex;
-  flex-flow: row wrap;
-}
-input {
-  flex: 3 0 auto;
-}
-label {
-  flex: 1 0 auto;
-  width: 33.333333333%;
-}
-*/
+
+
+
+
+
+
+
+
 /* Diagnostic CSS */
+
 /*
 * A quick baseline grid overlay using css+svg.
 * Inspired by [Basehold.it](https://basehold.it/).
