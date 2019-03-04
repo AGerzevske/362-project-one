@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Alegreya|Alegreya+SC');
+@import url("https://fonts.googleapis.com/css?family=Alegreya|Alegreya+SC");
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -16,10 +16,11 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
   https://www.modularscale.com/?18&px&1.618
 */
 
-/* Base Styles */
-/* Layout */
-/* Module Section */
-/* State */
+/* --- Base Styles --- */
+/* --- Layout --- */
+/* --- Module Section --- */
+/* --- State --- */
+/* --- Diagnostic CSS ---  */
 
 /* MATH
 
@@ -58,7 +59,7 @@ Standard +3
 /*
 http://mkweb.bcgsc.ca/color-summarizer/?analyze
 
-COlor summary from images using tool
+Color summary from images using tool
 
 Color 1: PHB
 #844A34 	132 74 52
@@ -72,11 +73,11 @@ http://paletton.com/#uid=14+0u0kdIeY042q5x7lmYnDH1H-
 
 /**/
 
-/* Base Styles */
+/* --- Base Styles --- */
 
 html { /*Standard*/
   background: #DDD;
-  font-family: "Alegreya", "Cambria", "Times", serif;
+  font-family: Alegreya, Cambria, Times, serif;
   font-size: 1.125em;
   line-height: 1.2222222222em;
   padding: 1.2222222222em;
@@ -84,7 +85,7 @@ html { /*Standard*/
 
 h1 { /*Standard +1*/
   color: #844A34;
-  font-family: "Alegreya SC", "Alegreya", "Cambria", "Times", serif;
+  font-family: "Alegreya SC", Alegreya, Cambria, Times, serif;
   font-size: 1.618em;
   line-height: 1.5107814861em;
 }
@@ -136,17 +137,19 @@ input[type="submit"]:disabled {
   background-color: rgba(67, 176, 183, 0.1);
 }
 
-/* Layout */
+
+/* --- Layout --- */
 
 #submit { /*Standard +1: em, lh, 1/4 lh*/
   color: #844A34;
-  font-family: "Alegreya SC", "Alegreya", "Cambria", "Times", serif;
+  font-family: "Alegreya SC", Alegreya, Cambria, Times, serif;
   font-size: 1.618em;
   padding: 0.3776953715em;
   line-height: 1.5107814861em;
 }
 
-/* Module Section */
+
+/* --- Module Section --- */
 
 .disclaimer { /*Standard -1*/
   padding-top: 1.977528089em;
@@ -156,25 +159,13 @@ input[type="submit"]:disabled {
 }
 
 
-
-/* State */
-
-@media screen and (min-width: 480px) {
-  form li {
-    display: flex;
-    flex-flow: row wrap;
-  }
-  input {
-    flex: 1 0 auto;
-  }
-  label {
-    flex: 1 0 auto;
-
-  }
-}
+/* --- State --- */
 
 @media screen and (min-width: 720px) {
-
+  /*Stop growing at suitable size*/
+  main {
+    width: 37.555555555em; /*(720 - 44) / 18 = 37.555555555*/
+  }
 
 }
 
@@ -187,7 +178,7 @@ input[type="submit"]:disabled {
 
 
 
-/* Diagnostic CSS */
+/* --- Diagnostic CSS ---  */
 
 /*
 * A quick baseline grid overlay using css+svg.
@@ -204,7 +195,7 @@ body.g::after {
   background: url('data:image/svg+xml;utf8,<svg height="22" width="1" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="0.5" style="fill:rgba(255, 0, 255, 0.5)" /></svg>') repeat top left;
 
   content: "";
-  display: block;
+  display: none;
   pointer-events: none;
   top: 0;
   right: 0;
@@ -215,5 +206,5 @@ body.g::after {
 }
 
 body.g:active::after {
-  display: none;
+  display: block;
 }
