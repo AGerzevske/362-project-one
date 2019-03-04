@@ -56,17 +56,15 @@
     info_submit.setAttribute('disabled', 'disabled');
 
 
-    signup_form.addEventListener('keyup',function(){
+    signup_form.addEventListener('keyup', function(){
       var email_value = email_input.value;
       var name_value = name_input.value;
-
-      info_submit.removeAttribute('disabled');
+      var info_error = document.querySelector('#info-error');
 
       if (validate_email(email_value) && validate_name(name_value)) {
-        info_submit.removeAtrribute('disabled');
+        info_submit.removeAttribute('disabled');
       } else {
-        var info_error = document.querySelector('#info-error');
-        if (email_value.length > 6 && info_error.innerText.length === 0) {
+        if (email_value.length > 6 && name_value.length > 1 && info_error.innerText.length === 0) {
           info_error.innerText = 'You need a valid email and name.';
         }
         info_submit.setAttribute('disabled', 'disabled');

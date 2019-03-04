@@ -148,6 +148,9 @@ input[type="submit"]:disabled {
   line-height: 1.5107814861em;
 }
 
+#info-error {
+  color: #844A34;
+}
 
 /* --- Module Section --- */
 
