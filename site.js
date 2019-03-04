@@ -46,14 +46,32 @@
 
   document.addEventListener('DOMContentLoaded', function(){
     var signup_form = document.querySelector('#signup-form');
-    var info_sumbit = document.querySelector('#submit');
+    var info_submit = document.querySelector('#submit');
     var email_input = document.querySelector('#email');
     var name_input = document.querySelector('#name');
     var info_hint = document.querySelector('.hint');
     info_hint.innerHTML += ' <b id="info-error"></b>';
 
     // disable the submit button until we are resonable sure we have an email
-    info_sumbit.setAttribute('disabled', 'disabled');
+    info_submit.setAttribute('disabled', 'disabled');
+
+
+    signup_form.addEventListener('keyup',function(){
+      var email_value = email_input.value;
+      var name_value = name_input.value;
+
+      info_submit.removeAttribute('disabled');
+
+      if (validate_email(email_value) && validate_name(name_value)) {
+        info_submit.removeAtrribute('disabled');
+      } else {
+        var info_error = document.querySelector('#info-error');
+        if (email_value.length > 6 && info_error.innerText.length === 0) {
+          info_error.innerText = 'You need a valid email and name.';
+        }
+        info_submit.setAttribute('disabled', 'disabled');
+      }
+    });
 
     // Email Java Stuff
     // Email on FOCUS
@@ -75,21 +93,6 @@
     // Name off FOCUS (BLUR)
     name_input.addEventListener('blur', function(){
       console.log('Name Blur');
-    });
-
-    signup_form.addEventListener('keyup', function(){
-      var email_value = email_input.value;
-      var name_value = name_input.value;
-      var info_error = document.querySelectory('#info-error');
-
-      if (validate_email(email_value) && validate_name(name_value)) {
-        // info_sumbit.removeAtrribute('disabled');
-      } else {
-        if (email_value.length > 6 && info_error.innerText.length === 0) {
-          info_error.innerText = 'You need a valid email and name.';
-        }
-        info_sumbit.setAttribute('disabled', 'disabled');
-      }
     });
 
   });
