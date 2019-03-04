@@ -6,24 +6,24 @@
   }
 
   // --- Data cleanup functions --- //
-  function eq(value,condition) {
+  function eq(value, condition) {
     return value === condition;
   }
-  function gt(value,condition) {
+  function gt(value, condition) {
     return value > condition;
   }
 
-  function validate(value,check,condition) {
-  if (eq(typeof(check.test),'function')) {
-    // Handle a regular expression
-    return check.test(value);
-  } else if (eq(typeof(check),'function')) {
-    // Handle a comparison function
-    return check(value,condition);
-  } else {
-    return false;
+  function validate(value, check, condition) {
+    if (eq(typeof(check.test), 'function')) {
+      // Handle a regular expression
+      return check.test(value);
+    } else if (eq(typeof(check), 'function')) {
+      // Handle a comparison function
+      return check(value, condition);
+    } else {
+      return false;
+    }
   }
-}
 
   // returns value with all whitespace characters removed
   function clean_whitespace(value) {
@@ -33,14 +33,14 @@
   // Email validity function
   function validate_email(value) {
     var email = clean_whitespace(value);
-    return validate(email,/^[^@\s]+@[^@\s]+$/g);
+    return validate(email, /^[^@\s]+@[^@\s]+$/g);
   }
 
   // Utilize Stolley stuff to try and get name working
   // Name validity function
   function validate_name(value) {
     var name = clean_whitespace(value);
-    return validate (name.length,gt,0);
+    return validate(name.length, gt, 0);
   }
 
 
@@ -49,19 +49,8 @@
     var info_sumbit = document.querySelector('#submit');
     var email_input = document.querySelector('#email');
     var name_input = document.querySelector('#name');
-    var contact_hint = document.querySelector('#contact-input .hint');
-    contact_hint.innerHTML += ' <b id="contact-error"></b>';
-
-    signup_form.addEventListener('keyup', function(){
-      var email_value = email_input.value;
-      var name_value = name_imput.value;
-
-      if (validate_email(email_value) && validate_name(name_value)) {
-        info_sumbit.removeAtrribute('disabled');
-      } else {
-        var info_error = document.querySelectory('');
-      }
-    });
+    var info_hint = document.querySelector('.hint');
+    info_hint.innerHTML += ' <b id="info-error"></b>';
 
     // disable the submit button until we are resonable sure we have an email
     info_sumbit.setAttribute('disabled', 'disabled');
@@ -86,6 +75,21 @@
     // Name off FOCUS (BLUR)
     name_input.addEventListener('blur', function(){
       console.log('Name Blur');
+    });
+
+    signup_form.addEventListener('keyup', function(){
+      var email_value = email_input.value;
+      var name_value = name_input.value;
+      var info_error = document.querySelectory('#info-error');
+
+      if (validate_email(email_value) && validate_name(name_value)) {
+        // info_sumbit.removeAtrribute('disabled');
+      } else {
+        if (email_value.length > 6 && info_error.innerText.length === 0) {
+          info_error.innerText = 'You need a valid email and name.';
+        }
+        info_sumbit.setAttribute('disabled', 'disabled');
+      }
     });
 
   });

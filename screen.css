@@ -126,15 +126,15 @@ input[type="text"]:focus {
 }
 
 input[type="submit"] {
-  background-color: rgba(67, 176, 183, 1);
+  background-color: rgba(84, 48, 78, 1);
 }
 
 input[type="submit"]:active {
-  background-color: rgba(67, 176, 183, 0.5);
+  background-color: rgba(84, 48, 78, 0.5);
 }
 
 input[type="submit"]:disabled {
-  background-color: rgba(67, 176, 183, 0.1);
+  background-color: rgba(84, 48, 78, 0.1);
 }
 
 
