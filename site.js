@@ -64,7 +64,7 @@
       if (validate_email(email_value) && validate_name(name_value)) {
         info_submit.removeAttribute('disabled');
       } else {
-        if (email_value.length > 1 && name_value.length > 1 && info_error.innerText.length === 0) {
+        if (email_value.length > 0 && name_value.length > 0 && info_error.innerText.length === 0) {
           info_error.innerText = 'You need a valid email and name.';
         }
         info_submit.setAttribute('disabled', 'disabled');
