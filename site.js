@@ -1,14 +1,67 @@
 'use strict';
 (function() {
+  // Check for old browser
   if (!('querySelector' in document && 'addEventListener' in document)) {
     return;
   }
 
+  // --- Data cleanup functions --- //
+  function eq(value,condition) {
+    return value === condition;
+  }
+  function gt(value,condition) {
+    return value > condition;
+  }
+
+  function validate(value,check,condition) {
+  if (eq(typeof(check.test),'function')) {
+    // Handle a regular expression
+    return check.test(value);
+  } else if (eq(typeof(check),'function')) {
+    // Handle a comparison function
+    return check(value,condition);
+  } else {
+    return false;
+  }
+}
+
+  // returns value with all whitespace characters removed
+  function clean_whitespace(value) {
+    return value.replace(/\s/g, '');
+  }
+
+  // Email validity function
+  function validate_email(value) {
+    var email = clean_whitespace(value);
+    return validate(email,/^[^@\s]+@[^@\s]+$/g);
+  }
+
+  // Utilize Stolley stuff to try and get name working
+  // Name validity function
+  function validate_name(value) {
+    var name = clean_whitespace(value);
+    return validate (name.length,gt,0);
+  }
+
+
   document.addEventListener('DOMContentLoaded', function(){
+    var signup_form = document.querySelector('#signup-form');
     var info_sumbit = document.querySelector('#submit');
     var email_input = document.querySelector('#email');
     var name_input = document.querySelector('#name');
-    console.log('DOM Loaded');
+    var contact_hint = document.querySelector('#contact-input .hint');
+    contact_hint.innerHTML += ' <b id="contact-error"></b>';
+
+    signup_form.addEventListener('keyup', function(){
+      var email_value = email_input.value;
+      var name_value = name_imput.value;
+
+      if (validate_email(email_value) && validate_name(name_value)) {
+        info_sumbit.removeAtrribute('disabled');
+      } else {
+        var info_error = document.querySelectory('');
+      }
+    });
 
     // disable the submit button until we are resonable sure we have an email
     info_sumbit.setAttribute('disabled', 'disabled');
@@ -24,12 +77,6 @@
       console.log('Email Blur');
     });
 
-    // Email read data
-    email_input.addEventListener('keyup', function() {
-      var email_data = this.value;
-      console.log('The value of #email is ', email_data);
-    });
-
     // Name Java Stuff
     // Name on FOCUS
     name_input.addEventListener('focus', function(){
@@ -41,26 +88,5 @@
       console.log('Name Blur');
     });
 
-    // Name read data
-    name_input.addEventListener('keyup', function() {
-      var name_data = this.value;
-      console.log('The value of #name is ', name_data);
-    });
-    /*
-    var name_data = '#name';
-    var email_data = '#email';
-    // Enable submit button when valid data is in both forms
-    if (name_data.length >= 1 && email_data.length >= 6) {
-      console.log('Correct');
-      info_sumbit.removeAttribute('disabled');
-   }
-   */
   });
 }());
-
-//  var clean_number = this.value.replace(/\D/g,'');
-//  var sanatized_number = clean_number.value.replace.(/^1,'');
-//  if (sanatized_number.length === 10) {
-//    console.log('Correct');
-//    email_sumbit.removeAttribute('disabled');
-//  }
