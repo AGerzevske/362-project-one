@@ -209,5 +209,5 @@ body.g::after {
 }
 
 body.g:active::after {
-  display: block;
+  display: none;
 }
